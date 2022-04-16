@@ -1,7 +1,7 @@
 <template>
   <md-field :class="['md-datepicker', { 'md-native': !this.mdOverrideNative }]" :md-clearable="mdClearable" @md-clear="onClear">
     <md-date-icon class="md-date-icon" @click.native="toggleDialog" />
-    <md-input :type="type" ref="input" v-model="inputDate" @focus.native="onFocus" :pattern="pattern" />
+    <md-input :type="type" ref="input" v-model="inputDate" @focus.native="onFocus" :pattern="pattern" :disabled="disabled" :readonly="readonly" :required="required" />
 
     <slot />
 
@@ -69,6 +69,18 @@
       mdClearable: {
         type: Boolean,
         default: true
+      },
+      readonly: {
+        type: Boolean,
+        default: false
+      },
+      required: {
+        type: Boolean,
+        default: false
+      },
+      disabled: {
+        type: Boolean,
+        default: false
       }
     },
     data: () => ({
